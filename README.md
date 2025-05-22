@@ -118,7 +118,3 @@ python3 agsb.py
 - 所有文件都安装在用户目录下，不影响系统目录
 - 安装完成后会在`~/bin`目录创建命令链接，如需使用，请确保该目录在PATH环境变量中
 
-## 作者
-[康康的Github项目](https://github.com/zhumengkang/)  
-[康康的YouTube频道](https://www.youtube.com/@%E5%BA%B7%E5%BA%B7%E7%9A%84V2Ray%E4%B8%8EClash) 
-[康康的TG群组](https://t.me/+WibQp7Mww1k5MmZl) 
