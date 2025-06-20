@@ -409,16 +409,13 @@ def install():
     if not os.path.exists(frp_path):
         # 下载压缩包
         tar_path = str(INSTALL_DIR / "frp.tar.gz")
-        frp_version="0.62.1"
-        if not download_file(singbox_url, tar_path):
-            print("frp 下载失败，尝试使用备用地址")
-            frp_package=f"frp_${frp_version}_linux_${arch}.tar.gz"
-            
-            # 尝试使用备用地址
-            frp_url = f"https://github.com/fatedier/frp/releases/download/v{frp_version}/{frp_package}"
-            if not download_file(frp_url, tar_path):
-                print("frp下载也失败，退出安装")
-                sys.exit(1)
+        frp_version = "0.62.1"
+        frp_package = f"frp_${frp_version}_linux_${arch}.tar.gz"
+        frp_url = f"https://github.com/fatedier/frp/releases/download/v{frp_version}/{frp_package}"
+
+        if not download_file(frp_url, tar_path):
+            print("frp 下载失败")
+            sys.exit(1)
         
         # 解压缩
         try:
