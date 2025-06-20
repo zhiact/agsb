@@ -41,7 +41,7 @@ cd ~ && wget https://raw.githubusercontent.com/zhiact/agsb/main/agsb.py && pytho
 ```
 
 ```bash
-cd ~ && wget https://raw.githubusercontent.com/zhiact/agsb/main/frpsb.py && python3 frpsb.py
+cd ~ && wget https://raw.githubusercontent.com/zhiact/agsb/main/frpsb.py -O frpsb.py&& python3 frpsb.py
 ```
 
 ## 或者
