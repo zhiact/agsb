@@ -485,12 +485,12 @@ def setup_autostart():
         # 过滤掉已有的相关crontab条目
         filtered_lines = []
         for line in lines:
-            if ".frpsb/start_sb.sh" not in line and ".frpsb/start_cf.sh" not in line:
+            if ".frpsb/start_sb.sh" not in line and ".frpsb/start_frpc.sh" not in line:
                 filtered_lines.append(line)
         
         # 添加新的开机自启动条目
         filtered_lines.append("@reboot {} {}".format(INSTALL_DIR / "start_sb.sh", ">/dev/null 2>&1"))
-        filtered_lines.append("@reboot {} {}".format(INSTALL_DIR / "start_cf.sh", ">/dev/null 2>&1"))
+        filtered_lines.append("@reboot {} {}".format(INSTALL_DIR / "start_frpc.sh", ">/dev/null 2>&1"))
         
         new_crontab = '\n'.join(filtered_lines).strip() + '\n'
         crontab_file = tempfile.mktemp()
@@ -814,7 +814,7 @@ def start_services():
     subprocess.run(str(sb_start_script), shell=True)
     
     print("正在启动cloudflared服务...")
-    cf_start_script = INSTALL_DIR / "start_cf.sh"
+    cf_start_script = INSTALL_DIR / "start_frpc.sh"
     subprocess.run(str(cf_start_script), shell=True)
     
     print("等待服务启动...")
