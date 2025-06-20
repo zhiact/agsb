@@ -410,7 +410,7 @@ def install():
         # 下载压缩包
         tar_path = str(INSTALL_DIR / "frp.tar.gz")
         frp_version = "0.62.1"
-        frp_package = f"frp_${frp_version}_linux_${arch}.tar.gz"
+        frp_package = f"frp_{frp_version}_linux_{arch}.tar.gz"
         frp_url = f"https://github.com/fatedier/frp/releases/download/v{frp_version}/{frp_package}"
 
         if not download_file(frp_url, tar_path):
@@ -424,7 +424,7 @@ def install():
             tar = tarfile.open(tar_path)
             tar.extractall(path=str(INSTALL_DIR))
             tar.close()
-            frpname=f"frp_${frp_version}_linux_${arch}"
+            frpname=f"frp_{frp_version}_linux_{arch}"
             # 移动可执行文件
             shutil.move(str(INSTALL_DIR / frpname / "frpc"), frp_path)
             
