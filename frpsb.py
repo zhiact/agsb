@@ -280,9 +280,7 @@ def generate_links(uuid_str):
     print("\033[36m╭───────────────────────────────────────────────────────────────╮\033[0m")
     print("\033[36m│                \033[33m✨ frpSB 安装成功! ✨                    \033[36m│\033[0m")
     print("\033[36m├───────────────────────────────────────────────────────────────┤\033[0m")
-    print(f"\033[36m│ \033[32m域名: \033[0m{domain}")
     print(f"\033[36m│ \033[32mUUID: \033[0m{uuid_str}")
-    print(f"\033[36m│ \033[32mVMess端口: \033[0m{port_vm_ws}")
     print(f"\033[36m│ \033[32mWebSocket路径: \033[0m{ws_path_full}")
     print("\033[36m├───────────────────────────────────────────────────────────────┤\033[0m")
     print("\033[36m│ \033[33m所有节点列表 (一行一个版本保存在: ~/.frpsb/allnodes.txt):\033[0m")
@@ -796,7 +794,7 @@ cd {INSTALL_DIR}
 ''')
     os.chmod(str(sb_start_script), 0o755)
     
-    # 创建cloudflared启动脚本
+    # 创建frpc启动脚本
     cf_start_script = INSTALL_DIR / "start_frpc.sh"
     with open(str(cf_start_script), 'w') as f:
         f.write(f'''#!/bin/bash
@@ -813,7 +811,7 @@ def start_services():
     sb_start_script = INSTALL_DIR / "start_sb.sh"
     subprocess.run(str(sb_start_script), shell=True)
     
-    print("正在启动cloudflared服务...")
+    print("正在启动frpc服务...")
     cf_start_script = INSTALL_DIR / "start_frpc.sh"
     subprocess.run(str(cf_start_script), shell=True)
     
