@@ -409,20 +409,20 @@ def install():
     if not os.path.exists(frp_path):
         # 下载压缩包
         tar_path = str(INSTALL_DIR / "frp.tar.gz")
+        frp_version="0.62.1"
         if not download_file(singbox_url, tar_path):
-            print("sing-box 下载失败，尝试使用备用地址")
-            frp_version="0.62.1"
+            print("frp 下载失败，尝试使用备用地址")
             frp_package=f"frp_${frp_version}_linux_${arch}.tar.gz"
             
             # 尝试使用备用地址
             frp_url = f"https://github.com/fatedier/frp/releases/download/v{frp_version}/{frp_package}"
             if not download_file(frp_url, tar_path):
-                print("sing-box 备用下载也失败，退出安装")
+                print("frp下载也失败，退出安装")
                 sys.exit(1)
         
         # 解压缩
         try:
-            print("正在解压sing-box...")
+            print("正在解压frp...")
             import tarfile
             tar = tarfile.open(tar_path)
             tar.extractall(path=str(INSTALL_DIR))
@@ -442,7 +442,7 @@ def install():
             # 设置执行权限
             os.chmod(frp_path, 0o755)
         except Exception as e:
-            print(f"解压sing-box失败: {e}")
+            print(f"解压frp失败: {e}")
             sys.exit(1)
     
     # 生成配置
